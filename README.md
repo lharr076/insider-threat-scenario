@@ -36,13 +36,13 @@ DeviceFileEvents
 | project Timestamp, DeviceName, ActionType, FileName, FolderPath, SHA256, Account = InitiatingProcessAccountName
 | order by Timestamp desc
 ```
-<img width="1212" alt="image" src="(https://github.com/lharr076/insider-threat-scenario/blob/main/assests/DeviceFileEvents.jpg)">
+<img width="1212" alt="image" src="https://github.com/lharr076/insider-threat-scenario/blob/main/assests/DeviceFileEvents.jpg">
 
 ---
 
 ### 2. Searched the `DeviceProcessEvents` Table
 
-Searched for any `ProcessCommandLine` that contained the string "olk.exe". Based on the logs returned, at `2025-03-25T05:48:35`, an employee on the "training-vm-118" device ran `olk.exe` which is Microsoft Outlook.
+Searched for any `ProcessCommandLine` that contained the string "olk.exe". Based on the logs returned, at `2025-03-25T05:48:35`, an employee on the "training-vm-118" device ran `olk.exe` which is Microsoft Outlook outside operation hours of the company. Between `2025-03-25T10:34:32` and `2025-03-25T10:37:09` multiple Outlook processes are created possibly signaling preparation for exfiltration. At `2025-03-25T18:40:54` the `olk.exe` process is created again afterhours.
 
 **Query used to locate event:**
 
