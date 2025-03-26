@@ -4,8 +4,7 @@
 ## Steps the "Bad Actor" took Create Logs and IoCs:
 1. Copy sensitive files and put in a folder called ```company PII```
 2. Move folder into temp folder in attempt to hide
-3. Open email app to prepare for data exfil
-4. Delete the folder.
+3. Open email app to exfil data
 
 ---
 
@@ -34,12 +33,14 @@ DeviceFileEvents
 | where DeviceName startswith target_machine
 | where FileName contains "PII"
 | where ActionType in ("FileCreated", "FileRenamed")
-| project Timestamp, DeviceName, InitiatingProcessFileName, FolderPath, FileName, PreviousFileName, PreviousFolderPath, InitiatingProcessAccountName
+| project Timestamp, DeviceName, ActionType, FileName, FolderPath, SHA256, Account = InitiatingProcessAccountName
 | order by Timestamp desc
 
 // Detect Microsoft Outlook service was launched
 DeviceProcessEvents
+| where DeviceName == target_machine
 | where FileName == "olk.exe"
+| project Timestamp, DeviceName, AccountName, ActionType, FileName, FolderPath, SHA256, ProcessCommandLine
 | order by Timestamp desc
 ```
 
@@ -48,7 +49,7 @@ DeviceProcessEvents
 ## Created By:
 - **Author Name**: Larry Harris Jr
 - **Author Contact**: https://www.linkedin.com/in/larryharrisjr/
-- **Date**: November 9, 2024
+- **Date**: March 25, 2025
 
 ## Validated By:
 - **Reviewer Name**: 
@@ -65,4 +66,4 @@ DeviceProcessEvents
 ## Revision History:
 | **Version** | **Changes**                   | **Date**         | **Modified By**   |
 |-------------|-------------------------------|------------------|-------------------|
-| 1.0         | Initial draft                  | `November 9, 2024`  | `Josh Madakor`   
+| 1.0         | Initial draft                  | `March 5, 2025`  | `Larry Harris Jr`   
