@@ -70,51 +70,47 @@ DeviceProcessEvents
 ### 2. Folder Created - PII Folder 
 
 - **Timestamp:** `2025-03-25T10:33:34`
-- **Event:** The user "employee" executed the file `tor-browser-windows-x86_64-portable-14.0.1.exe` in silent mode, initiating a background installation of the TOR Browser.
-- **Action:** Process creation detected.
-- **Command:** `tor-browser-windows-x86_64-portable-14.0.1.exe /S`
-- **File Path:** `C:\Users\employee\Downloads\tor-browser-windows-x86_64-portable-14.0.1.exe`
+- **Event:** The user "Training-vm-1186" created folder `PII` on the desktop and moved the `PII Data.txt` file into the folder.
+- **Action:** Folder creation detected.
+- **File Path:** `C:\Users\Training-vm-1186\Desktop\Fake PII\Fake PII Data.txt`
 
-### 3. Process Execution - TOR Browser Launch
+### 3. Zip File Creation - PII.zip
 
-- **Timestamp:** `2024-11-08T22:17:21.6357935Z`
-- **Event:** User "employee" opened the TOR browser. Subsequent processes associated with TOR browser, such as `firefox.exe` and `tor.exe`, were also created, indicating that the browser launched successfully.
-- **Action:** Process creation of TOR browser-related executables detected.
-- **File Path:** `C:\Users\employee\Desktop\Tor Browser\Browser\TorBrowser\Tor\tor.exe`
+- **Timestamp:** `2025-03-25T10:41:03`
+- **Event:** User "Training-vm-1186" created zip file `PII.zip` in Temp folder in attempt to hide actions. 
+- **Action:** Zip file created.
+- **File Path:** `C:\Windows\Temp\Fake PII.zip`
 
-### 4. Network Connection - TOR Network
+### 4. Email Use Outside Operational Hours - Microsoft Outlook Activity
 
-- **Timestamp:** `2024-11-08T22:18:01.1246358Z`
-- **Event:** A network connection to IP `176.198.159.33` on port `9001` by user "employee" was established using `tor.exe`, confirming TOR browser network activity.
+- **Timestamp:** `2025-03-25T05:48:35`
+- **Event:** An email operation by user "Training-vm-1186" was established using `olk.exe`, confirming Microsoft Outlook activity after hours.
 - **Action:** Connection success.
-- **Process:** `tor.exe`
-- **File Path:** `c:\users\employee\desktop\tor browser\browser\torbrowser\tor\tor.exe`
+- **Process:** `olk.exe`
+- **File Path:** `C:\Program Files\WindowsApps\Microsoft.OutlookForWindows_1.2025.312.0_x64__8wekyb3d8bbwe\olk.exe`
 
-### 5. Additional Network Connections - TOR Browser Activity
+### 5. Additional Email Activity - Microsoft Outlook Activity
 
-- **Timestamps:**
-  - `2024-11-08T22:18:08Z` - Connected to `194.164.169.85` on port `443`.
-  - `2024-11-08T22:18:16Z` - Local connection to `127.0.0.1` on port `9150`.
-- **Event:** Additional TOR network connections were established, indicating ongoing activity by user "employee" through the TOR browser.
-- **Action:** Multiple successful connections detected.
+- **Timestamps:** From `2025-03-25T10:34:32` to `2025-03-25T10:37:09`
+- **Event:** Additional email activity was conducted, indicating ongoing activity by user "Training-vm-1186" through Microsoft Outlook.
+- **Action:** Microsoft Outlook login successful.
 
-### 6. File Creation - TOR Shopping List
+### 6. Additional Email Activity - Microsoft Outlook Activity
 
-- **Timestamp:** `2024-11-08T22:27:19.7259964Z`
-- **Event:** The user "employee" created a file named `tor-shopping-list.txt` on the desktop, potentially indicating a list or notes related to their TOR browser activities.
-- **Action:** File creation detected.
-- **File Path:** `C:\Users\employee\Desktop\tor-shopping-list.txt`
-
+- **Timestamps:** `2025-03-25T18:40:54`
+- **Event:** An email operation by user "Training-vm-1186" was established using `olk.exe`, confirming Microsoft Outlook activity after hours.
+- **Action:** Microsoft Outlook login successful.
+- **File Path:** `C:\Program Files\WindowsApps\Microsoft.OutlookForWindows_1.2025.319.100_x64__8wekyb3d8bbwe\olk.exe`
 ---
 
 ## Summary
 
-The user "employee" on the "threat-hunt-lab" device initiated and completed the installation of the TOR browser. They proceeded to launch the browser, establish connections within the TOR network, and created various files related to TOR on their desktop, including a file named `tor-shopping-list.txt`. This sequence of activities indicates that the user actively installed, configured, and used the TOR browser, likely for anonymous browsing purposes, with possible documentation in the form of the "shopping list" file.
+The user "Training-vm-1186" on the "training-vm-118" performed data exfiltration. They proceeded to create a PII file in notepad called `PII Data.txt`, created a folder called `PII` on the desktop , moved and created a zip file in the Windows Temp folder, and exfiltrate via Microsoft Outlook email. This sequence of activities indicates that the user actively copied and exfiltrated company PII data via Microsoft Outlook.
 
 ---
 
 ## Response Taken
 
-TOR usage was confirmed on the endpoint `threat-hunt-lab` by the user `employee`. The device was isolated, and the user's direct manager was notified.
+Data exfiltration was confirmed on the endpoint `training-vm-118` by the user `Training-vm-1186`. The device was isolated, and the user's direct manager was notified.
 
 ---
